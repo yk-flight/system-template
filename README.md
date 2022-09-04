@@ -145,4 +145,4 @@ system-springboot
 
 ## 交流群
 
-<img src="../system-template/doc/QQ.jpeg" alt="QQ" style="zoom:50%;" />
+<img src="doc/QQ.jpeg" alt="QQ" style="zoom:50%;" />
