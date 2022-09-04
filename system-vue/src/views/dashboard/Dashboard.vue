@@ -31,7 +31,7 @@
               </el-link>
             </p>
             <p>
-              <svg-icon icon="github"></svg-icon>&nbsp; GitHub：
+              <svg-icon icon="github"></svg-icon>&nbsp;
               <el-link
                 href="https://github.com/Architect-Java/system-template"
                 target="_blank"
