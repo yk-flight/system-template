@@ -43,7 +43,7 @@ public class SwaggerConfig {
                 // 定义标题
                 .title("后台管理系统接口文档")
                 // 接口文档描述
-                .description("基于SpringBoot + Vue2开发的前后端后台管理系统模板，采用SpringSecurity + JWT进行权限管理。项目前端采用element-ui、Vuex、axios等进行样式渲染以及动画实现，页面交互友好。同时项目后端使用RBAC动态权限体系，支持动态权限修改。项目代码相对简易、无过度封装和任何业务入侵，便于进行二次开发。")
+                .description("基于SpringBoot + Vue2开发的前后端分离的后台管理系统模板，采用SpringSecurity + JWT进行权限管理。项目前端采用element-ui、Vuex、axios等进行样式渲染以及动画实现，页面交互友好。同时项目后端使用RBAC动态权限体系，支持动态权限修改。项目代码相对简易、无过度封装和任何业务入侵，便于进行二次开发。")
                 // 接口文档作者信息
                 .contact(new Contact("世纪末的架构师", "http:localhost:8090/doc.html", "1072876976@qq.com"))
                 // 版本号
