@@ -19,9 +19,9 @@
 
 ## 项目地址
 
-**Github地址：**https://github.com/Architect-Java/system-template
+**Github地址：** https://github.com/Architect-Java/system-template
 
-**Gitee地址：**https://gitee.com/dream-flight/system--template
+**Gitee地址：** https://gitee.com/dream-flight/system--template
 
 管理员账号：admin	密码：123456
 
@@ -67,15 +67,15 @@ system-springboot
 ├── constant           --  静态常量模块
 ├── controller         --  控制器模块
 ├── dto                --  dto模块
-├── entity        		 --  实体类模块
-├── enums        		 	 --  枚举模块
-├── filters    			   --  过滤器模块
-├── generator			     --  逆向工程模块
-├── handler       		 --  处理器模块（自定义JWT权限过滤器）
+├── entity             --  实体类模块
+├── enums              --  枚举模块
+├── filters    	       --  过滤器模块
+├── generator	       --  逆向工程模块
+├── handler            --  处理器模块（自定义JWT权限过滤器）
 ├── mapper             --  数据持久化模块
-├── service       		 --  业务处理模块
-├── util          		 --  工具类模块
-└── vo        		     --  vo模块
+├── service            --  业务处理模块
+├── util               --  工具类模块
+└── vo        	       --  vo模块
 ```
 
 **项目运行：**
@@ -119,25 +119,25 @@ system-springboot
 
 ## 项目截图
 
-![login](/Users/zhangrongkang/workspace/MyProject/system-template/doc/login.png)
+![login](../system-template/doc/login.png)
 
-![dashboard](/Users/zhangrongkang/workspace/MyProject/system-template/doc/dashboard.png)
+![dashboard](../system-template/doc/dashboard.png)
 
-![profile-baseinfo](/Users/zhangrongkang/workspace/MyProject/system-template/doc/profile-baseinfo.png)
+![profile-baseinfo](../system-template/doc/profile-baseinfo.png)
 
-![profile-avatar](/Users/zhangrongkang/workspace/MyProject/system-template/doc/profile-avatar.png)
+![profile-avatar](../system-template/doc/profile-avatar.png)
 
-![menu](/Users/zhangrongkang/workspace/MyProject/system-template/doc/menu.png)
+![menu](../system-template/doc/menu.png)
 
-![swagger](/Users/zhangrongkang/workspace/MyProject/system-template/doc/swagger.png)
+![swagger](../system-template/doc/swagger.png)
 
-![role](/Users/zhangrongkang/workspace/MyProject/system-template/doc/user.png)
+![role](../system-template/doc/user.png)
 
-![log](/Users/zhangrongkang/workspace/MyProject/system-template/doc/log.png)
+![log](../system-template/doc/log.png)
 
-![log-info](/Users/zhangrongkang/workspace/MyProject/system-template/doc/404.png)
+![log-info](../system-template/doc/404.png)
 
-![401](/Users/zhangrongkang/workspace/MyProject/system-template/doc/401.png)
+![401](../system-template/doc/401.png)
 
 ## 项目总结
 
@@ -145,4 +145,4 @@ system-springboot
 
 ## 交流群
 
-<img src="/Users/zhangrongkang/workspace/MyProject/system-template/doc/QQ.jpeg" alt="QQ" style="zoom:50%;" />
+<img src="../system-template/doc/QQ.jpeg" alt="QQ" style="zoom:50%;" />
