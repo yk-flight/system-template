@@ -119,25 +119,25 @@ system-springboot
 
 ## 项目截图
 
-![login](../system-template/doc/login.png)
+![login](doc/login.png)
 
-![dashboard](../system-template/doc/dashboard.png)
+![dashboard](doc/dashboard.png)
 
-![profile-baseinfo](../system-template/doc/profile-baseinfo.png)
+![profile-baseinfo](doc/profile-baseinfo.png)
 
-![profile-avatar](../system-template/doc/profile-avatar.png)
+![profile-avatar](doc/profile-avatar.png)
 
-![menu](../system-template/doc/menu.png)
+![menu](doc/menu.png)
 
-![swagger](../system-template/doc/swagger.png)
+![swagger](doc/swagger.png)
 
-![role](../system-template/doc/user.png)
+![role](doc/user.png)
 
-![log](../system-template/doc/log.png)
+![log](doc/log.png)
 
-![log-info](../system-template/doc/404.png)
+![log-info](doc/404.png)
 
-![401](../system-template/doc/401.png)
+![401](doc/401.png)
 
 ## 项目总结
 
