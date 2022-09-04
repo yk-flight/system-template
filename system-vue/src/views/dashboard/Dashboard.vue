@@ -12,22 +12,31 @@
           <div class="body">
             <p>
               一直想开发一个属于自己的后台管理系统模板，但是自己最初没有接触过前后端分离的系统，开发前端时被各种样式和菜单动态渲染搞得痛不欲生，
-              开发后端时被Spring Security虐的体无完肤，期间无数次想过用熟练一套优秀的开源框架，但是本着这样一个浮躁的心态去学习，最终的结果就是再次被各种优秀的开源框架摁在地上摩擦...... <br><br>
+              开发后端时被Spring
+              Security虐的体无完肤，期间无数次想过用熟练一套优秀的开源框架，但是本着这样一个浮躁的心态去学习，最终的结果就是再次被各种优秀的开源框架摁在地上摩擦......
+              <br /><br />
               痛定思痛，深刻意识到自己应该沉下心来去踏踏实实的学习技术。终于在一段时间以后，我将之前的问题一一解决并且成功的看懂了一些优秀的开源框架，内心对自己开发一套后台管理系统模板的渴望
-              愈发强烈，有想法就去做，最后我终于开发出了属于自己的一套后台管理系统模板。<br><br>
-              <b>由于本人缺乏设计美感，开发过程中前端样式参考了若依框架、element-admin、风宇的个人博客、楠橘星后台管理的样式进行开发。</b>当下项目仍然有很多局限，后续我会继续迭代优化<br><br>
+              愈发强烈，有想法就去做，最后我终于开发出了属于自己的一套后台管理系统模板。<br /><br />
+              <b
+                >由于本人缺乏设计美感，开发过程中前端样式参考了若依框架、element-admin、风宇的个人博客、楠橘星后台管理的样式进行开发。</b
+              >当下项目仍然有很多局限，后续我会继续迭代优化<br /><br />
             </p>
             <p>
               <svg-icon icon="gitee"></svg-icon>&nbsp;
-              <el-link href="https://gitee.com/dream-flight/system--template" target="_blank">
+              <el-link
+                href="https://gitee.com/dream-flight/system--template"
+                target="_blank"
+              >
                 https://gitee.com/dream-flight/system--template
               </el-link>
             </p>
             <p>
-              <svg-icon icon="github"></svg-icon>&nbsp;
-              GitHub：
-              <el-link href="http://www.ruoyi.vip" target="_blank">
-                http://www.ruoyi.vip
+              <svg-icon icon="github"></svg-icon>&nbsp; GitHub：
+              <el-link
+                href="https://github.com/Architect-Java/system-template"
+                target="_blank"
+              >
+                https://github.com/Architect-Java/system-template
               </el-link>
             </p>
           </div>
@@ -79,17 +88,17 @@
           <div slot="header" class="clearfix">
             <span>学习交流</span>
           </div>
-          <div style="text-align: center;">
-            <img src="../../assets/image/QQ.png" alt="donate"
-              width="65%" />
-            <span style="display: inline-block; height: 30px; line-height: 30px">
+          <div style="text-align: center">
+            <img src="../../assets/image/QQ.png" alt="donate" width="65%" />
+            <span
+              style="display: inline-block; height: 30px; line-height: 30px"
+            >
               欢迎大家加入QQ群聊一起交流学习！
             </span>
           </div>
         </el-card>
       </el-col>
     </el-row>
-
   </div>
 </template>
 
@@ -106,7 +115,7 @@ export default {
     };
   },
 
-  mounted() { },
+  mounted() {},
 
   methods: {
     goTarget(href) {
@@ -144,11 +153,7 @@ export default {
     margin: 0;
   }
 
-  font-family: "open sans",
-  "Helvetica Neue",
-  Helvetica,
-  Arial,
-  sans-serif;
+  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   color: #676a6c;
   overflow-x: hidden;

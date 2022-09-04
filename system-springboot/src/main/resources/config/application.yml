@@ -5,8 +5,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/system-template?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true
-    username: root
-    password: 123456
+    username: 你的数据库用户名
+    password: 你的数据库密码
     hikari:
       # 连接池名称
       pool-name: DateHikariCP
@@ -37,13 +37,13 @@ spring:
     # 超时时间
     connect-timeout: 10000ms
     # 服务器地址
-    host: 127.0.0.1
+    host: 你的redis地址
     # 端口号
     port: 6379
     # 数据库
-    database: 0
+    database: 2
     # 密码
-    # password: 本地暂时没有配置密码
+    # password: 本地暂时没有配置密码，如果你的redis配置了密码则打开当前注释并输入密码
     lettuce:
       pool:
         # 最大连接数，默认8
@@ -83,4 +83,5 @@ jwt:
 
 # 文件上传配置
 file:
-  path: D:/IDEAproject/system-template/system-springboot/upload/
+  # 例如 /Users/zhangrongkang/workspace/MyProject/system-template/system-springboot/upload/ 最后的"/"不要省略
+  path: 你的文件存储路径（到当前项目的upload文件下）
