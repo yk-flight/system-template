@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zrkizzy.template.mapper.OperateLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zrkizzy.template.entity.OperateLog">
+        <id column="id" property="id" />
+        <result column="model" property="model" />
+        <result column="type" property="type" />
+        <result column="request_method" property="requestMethod" />
+        <result column="operate_method" property="operateMethod" />
+        <result column="user" property="user" />
+        <result column="operate_ip" property="operateIp" />
+        <result column="operate_addr" property="operateAddr" />
+        <result column="status" property="status" />
+        <result column="request_param" property="requestParam" />
+        <result column="return_param" property="returnParam" />
+        <result column="operate_time" property="operateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, model, type, request_method, operate_method, user, operate_ip, operate_addr, status, request_param, return_param, operate_time
+    </sql>
+
+</mapper>

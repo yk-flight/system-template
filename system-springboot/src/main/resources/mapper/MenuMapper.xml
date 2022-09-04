@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zrkizzy.template.mapper.MenuMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zrkizzy.template.entity.Menu">
+        <id column="id" property="id"/>
+        <result column="url" property="url"/>
+        <result column="path" property="path"/>
+        <result column="component" property="component"/>
+        <result column="permission" property="permission"/>
+        <result column="name" property="name"/>
+        <result column="icon" property="icon"/>
+        <result column="requireAuth" property="requireAuth"/>
+        <result column="parentId" property="parentId"/>
+        <result column="enabled" property="enabled"/>
+        <result column="createTime" property="createTime"/>
+    </resultMap>
+
+    <!-- 根据角色获取菜单列表 -->
+    <resultMap id="MenuWithRole" type="com.zrkizzy.template.entity.Menu" extends="BaseResultMap">
+        <collection property="roles" ofType="com.zrkizzy.template.entity.Role">
+            <id column="rid" property="id" />
+            <result column="rname" property="roleName" />
+            <result column="rnameZh" property="roleNameZh" />
+        </collection>
+    </resultMap>
+
+    <!-- 根据角色获取菜单列表 -->
+    <select id="getMenuWithRole" resultMap="MenuWithRole">
+        SELECT
+        m.*,
+        r.id AS rid,
+        r.role_name AS rname,
+        r.role_name_zh AS rnameZh
+        FROM
+        menu m,
+        `role` r
+        WHERE
+        m.id IN
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <!-- 根据角色获取菜单列表 -->
+    <resultMap id="Menus" type="com.zrkizzy.template.entity.Menu" extends="BaseResultMap">
+        <collection property="children" ofType="com.zrkizzy.template.entity.Menu">
+            <id column="id2" property="id"/>
+            <result column="url2" property="url"/>
+            <result column="path2" property="path"/>
+            <result column="component2" property="component"/>
+            <result column="permission2" property="permission"/>
+            <result column="name2" property="name"/>
+            <result column="icon2" property="icon"/>
+            <result column="requireAuth2" property="requireAuth"/>
+            <result column="parentId2" property="parentId"/>
+            <result column="enabled2" property="enabled"/>
+            <result column="createTime2" property="createTime"/>
+        </collection>
+    </resultMap>
+
+
+    <select id="selectAccessPath" resultType="java.lang.String">
+        SELECT m.path
+        FROM menu m
+        WHERE
+            m.path != '/'
+            AND m.id IN
+            <foreach collection="ids" item="id" separator="," open="(" close=")">
+               #{id}
+            </foreach>
+    </select>
+
+    <select id="selectPermission" resultType="java.lang.String">
+        SELECT DISTINCT
+            m.permission
+        FROM
+            menu m
+        WHERE
+            m.enabled = 1
+          AND
+            m.id IN
+            <foreach collection="ids" open="(" close=")" separator="," item="id">
+                #{id}
+            </foreach>
+    </select>
+
+</mapper>

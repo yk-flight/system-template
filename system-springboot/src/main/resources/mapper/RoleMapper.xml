@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zrkizzy.template.mapper.RoleMapper">
+
+    <select id="getRoles" resultType="com.zrkizzy.template.entity.Role">
+        SELECT
+            role_name,
+            role_name_zh
+        FROM
+            role AS r
+                LEFT JOIN user_role AS ur ON r.id = ur.role_id
+        WHERE
+            ur.user_id = #{userId}
+    </select>
+
+    <!-- 获取所有权限 -->
+    <select id="getAllPermission" resultType="com.zrkizzy.template.dto.PermissionDto">
+        SELECT DISTINCT
+        m.id,
+        m.path,
+        m.name,
+        m.icon
+        FROM
+        menu m
+        WHERE
+        m.path != '/'
+    </select>
+
+    <select id="selectByUserId" resultType="java.lang.String">
+        SELECT
+            r.permission
+        FROM
+            `role` r,
+            user_role ur
+        WHERE
+            ur.user_id = #{userId}
+          AND r.id = ur.role_id
+    </select>
+</mapper>

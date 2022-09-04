@@ -1,0 +1,9 @@
+.el-avatar {
+  --el-avatar-background-color: none;
+}
+
+/* element滚动条组件 隐藏水平滚动条 */
+.sidebar-wrapper {
+  width: 200px;
+  overflow-x: hidden;
+}
