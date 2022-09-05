@@ -2,9 +2,9 @@
 
 <div align="center">
   <img src="https://z3.ax1x.com/2021/06/29/RdO4fO.jpg" width="200px">
-
     
-  <span>**基于SpringBoot + Vue开发的后台管理系统模板**</span>  
+  <span>**基于SpringBoot + Vue开发的后台管理系统模板**</span>
+
   ![](https://img.shields.io/badge/Java-1.8-orange) ![](https://img.shields.io/badge/MySQL-8.0.13-brightgreen) ![](https://img.shields.io/badge/SpringBoot-2.4.1-yellow) ![](https://img.shields.io/badge/SpringSecurity-%E6%9D%83%E9%99%90-blue) ![](https://img.shields.io/badge/MybatisPlus-3.4.3-red) ![](https://img.shields.io/badge/jjwt-0.9.1-lightgrey) ![](https://img.shields.io/badge/kaptcha-0.0.9-orange) ![](https://img.shields.io/badge/fastjson-2.0.10-blue) ![](https://img.shields.io/badge/SpringRedis-2.4.1-red) ![](https://img.shields.io/badge/vue-2.6.11-yellowgreen) ![](https://img.shields.io/badge/axios-0.27.2-orange) ![](https://img.shields.io/badge/vuex-3.6.2-brightgreen) ![](https://img.shields.io/badge/element--ui-2.15.6-blue)
 
 </div>
@@ -78,13 +78,15 @@ system-springboot
 └── vo        	       --  vo模块
 ```
 
-**项目运行：**
+## 项目运行：
 
 拉取项目到本地后，在数据库中直接运行`system-mysql8.sql`文件即可，数据库会自动创建好并导入数据。接着需要修改项目配置类中相应的参数信息。接着在前端项目中执行`npm install`方法下载前端项目对应的依赖后项目即可成功启动。
 
 项目启动成功后输入管理员账号：admin	密码：123456进行登录即可进入系统
 
 本地接口文档地址：http://localhost:8090/doc.html
+
+**代码生成器运行：** 在使用`Mybatis-Plus`代码生成器时，需要先将`/src/main/java/com/zrkizzy/template/generator`目录下的`CodeGentrator`文件中数据库连接参数以及数据库用户名密码进行相应的修改后即可成功运行
 
 **注意：** 先启动后端项目，再启动前端项目，前端项目很多数据以及配置由后端动态加载
 
@@ -100,6 +102,10 @@ system-springboot
 - 前端代码层次简单，没有进行严重封装，便于后端开发者阅读与扩展开发
 - 后端代码编写遵循阿里巴巴开发规范，利于开发者学习
 - 项目仅完成后台管理系统最基本功能，无任何业务侵入，利于二次开发
+
+## 技术介绍：
+**前端：** vue + vuex + vue-router + axios + element-ui + sass + vue-cropper + dayjs + nprogress  
+**后端：** SpringBoot + SpringSecurity + JWT + Swagger2 + MyBatisPlus + MySQL + Redis + Freemarker + FastJson + Kaptcha
 
 ## 开发环境
 
