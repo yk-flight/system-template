@@ -3,7 +3,7 @@
   transition: all 0.5s;
 }
 
-.breadcrumb-enter-from,
+.breadcrumb-enter,
 .breadcrumb-leave-active {
   opacity: 0;
   /* 在 x 轴移动 20px */
@@ -20,7 +20,7 @@
   transition: all 0.5s;
 }
 
-.fade-transform-enter-from {
+.fade-transform-enter {
   /* 透明度为0 */
   opacity: 0;
   /* 横向移动 30px */

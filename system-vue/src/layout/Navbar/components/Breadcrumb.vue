@@ -6,9 +6,9 @@
         :key="item.path"
       >
         <!-- 不可点击项，一般为数组中的最后一个 -->
-        <span class="no-redirect" v-if="index === breadcrumData.length - 1">{{
-          item.meta.title
-        }}</span>
+        <span class="no-redirect" v-if="index === breadcrumData.length - 1">
+          {{ item.meta.title }}
+        </span>
         <!-- 可点击项 -->
         <span class="redirect" v-else @click="onLinkClick(item)">{{
           item.meta.title
