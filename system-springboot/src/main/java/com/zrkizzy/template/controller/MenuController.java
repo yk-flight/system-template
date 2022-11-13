@@ -24,17 +24,17 @@ import java.util.List;
 @RestController
 public class MenuController {
     @Resource
-    private IMenuService IMenuService;
+    private IMenuService menuService;
 
     @ApiOperation("获取所有角色权限")
     @GetMapping("/admin/getAllPermission")
     public List<PermissionDTO> getAllPermission() {
-        return IMenuService.getAllPermission();
+        return menuService.getAllPermission();
     }
 
     @ApiOperation("获取所有菜单列表")
     @PostMapping("/admin/getAllMenus")
     public List<MenuDTO> getAllMenus(@RequestBody MenuVO menuVO) {
-        return IMenuService.getAllMenus(menuVO);
+        return menuService.getAllMenus(menuVO);
     }
 }

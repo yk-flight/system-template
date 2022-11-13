@@ -22,35 +22,35 @@ import java.util.List;
 @RequestMapping("/role")
 public class RoleController {
     @Resource
-    private IRoleService IRoleService;
+    private IRoleService roleService;
 
     @ApiOperation("获取所有角色")
     @GetMapping("/admin/getAllRoles")
     public List<RoleDTO> getAllRoles() {
-        return IRoleService.getAllRoles();
+        return roleService.getAllRoles();
     }
 
     @ApiOperation("更新角色")
     @PutMapping("/admin/updateRole")
     public Result updateRole(@RequestBody RoleVO roleVO) {
-        return IRoleService.updateRole(roleVO);
+        return roleService.updateRole(roleVO);
     }
 
     @ApiOperation("新增角色")
     @PostMapping("/admin/insertRole")
     public Result insertRole(@RequestBody RoleVO roleVO) {
-        return IRoleService.insertRole(roleVO);
+        return roleService.insertRole(roleVO);
     }
 
     @ApiOperation("删除角色")
     @DeleteMapping("/admin/deleteRole/{id}")
     public Result deleteRoleById(@PathVariable Integer id) {
-        return IRoleService.deleteRoleById(id);
+        return roleService.deleteRoleById(id);
     }
 
     @ApiOperation("获取当前登录用户可访问的页面")
     @GetMapping("/admin/getAccessPath")
     public List<String> getAccessPath() {
-        return IRoleService.getAccessPath();
+        return roleService.getAccessPath();
     }
 }

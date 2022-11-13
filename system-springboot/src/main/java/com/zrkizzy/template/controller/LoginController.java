@@ -22,12 +22,12 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class LoginController {
     @Resource
-    private IUserService IUserService;
+    private IUserService userService;
 
     @ApiOperation(value = "登录后返回token")
     @PostMapping("/login")
     public Result login(@RequestBody LoginQuery loginQuery, HttpServletRequest request) {
-        return IUserService.login(loginQuery.getUsername(), loginQuery.getPassword(), loginQuery.getCode(), request);
+        return userService.login(loginQuery.getUsername(), loginQuery.getPassword(), loginQuery.getCode(), request);
     }
 
     @ApiOperation(value = "退出登录")

@@ -19,17 +19,17 @@ import javax.annotation.Resource;
 @RequestMapping("/user-role")
 public class UserRoleController {
     @Resource
-    private IUserRoleService IUserRoleService;
+    private IUserRoleService userRoleService;
 
     @ApiOperation("根据用户ID获取角色ID")
     @GetMapping("/getRoleByUserId/{id}")
     public Integer getRoleByUserId(@PathVariable Integer id) {
-        return IUserRoleService.getRoleByUserId(id);
+        return userRoleService.getRoleByUserId(id);
     }
 
     @ApiOperation("更新用户角色")
     @PutMapping("/updateUserRole")
     public Result updateUserRole(Integer userId, Integer roleId) {
-        return IUserRoleService.updateUserRole(userId, roleId);
+        return userRoleService.updateUserRole(userId, roleId);
     }
 }
