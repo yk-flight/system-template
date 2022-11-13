@@ -3,7 +3,7 @@ package com.zrkizzy.template.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zrkizzy.template.entity.UserRole;
 import com.zrkizzy.template.mapper.UserRoleMapper;
-import com.zrkizzy.template.service.UserRoleService;
+import com.zrkizzy.template.service.IUserRoleService;
 import com.zrkizzy.template.vo.Result;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  * @date 2022/8/7
  */
 @Service
-public class UserRoleServiceImpl implements UserRoleService {
+public class IUserRoleServiceImpl implements IUserRoleService {
 
     @Resource
     private UserRoleMapper userRoleMapper;

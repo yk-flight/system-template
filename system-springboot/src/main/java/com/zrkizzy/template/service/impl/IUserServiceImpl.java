@@ -8,7 +8,7 @@ import com.zrkizzy.template.entity.User;
 import com.zrkizzy.template.entity.UserInfo;
 import com.zrkizzy.template.entity.UserRole;
 import com.zrkizzy.template.mapper.*;
-import com.zrkizzy.template.service.UserService;
+import com.zrkizzy.template.service.IUserService;
 import com.zrkizzy.template.utils.*;
 import com.zrkizzy.template.vo.PageVO;
 import com.zrkizzy.template.vo.Result;
@@ -46,7 +46,7 @@ import static com.zrkizzy.template.constant.CommonConst.LOCAL_HOST;
  * @date 2022/8/7
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class IUserServiceImpl implements IUserService {
     @Resource
     private UserMapper userMapper;
     @Resource

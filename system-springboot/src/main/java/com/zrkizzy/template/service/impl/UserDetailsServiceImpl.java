@@ -1,7 +1,7 @@
 package com.zrkizzy.template.service.impl;
 
 import com.zrkizzy.template.entity.User;
-import com.zrkizzy.template.service.UserService;
+import com.zrkizzy.template.service.IUserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,15 +16,15 @@ import javax.annotation.Resource;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Resource
-    private UserService userService;
+    private IUserService IUserService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // 根据当前用户名到数据库中进行查询
-        User user = userService.getUserByUserName(username);
+        User user = IUserService.getUserByUserName(username);
         if (user != null) {
             // 设置当前用户的角色
-            user.setRoles(userService.getRoles(user.getId()));
+            user.setRoles(IUserService.getRoles(user.getId()));
             return user;
         }
         throw new UsernameNotFoundException("用户名或密码不正确");

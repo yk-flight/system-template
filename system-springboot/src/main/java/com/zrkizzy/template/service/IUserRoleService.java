@@ -6,7 +6,7 @@ import com.zrkizzy.template.vo.Result;
  * @author zhangrongkang
  * @date 2022/8/7
  */
-public interface UserRoleService {
+public interface IUserRoleService {
     /**
      * 根据用户ID获取角色ID
      *

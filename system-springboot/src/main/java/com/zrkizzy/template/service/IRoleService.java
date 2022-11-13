@@ -10,7 +10,7 @@ import java.util.List;
  * @author zhangrongkang
  * @date 2022/8/7
  */
-public interface RoleService {
+public interface IRoleService {
     /**
      * 获取所有角色
      *

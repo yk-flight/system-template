@@ -11,7 +11,7 @@ import java.util.List;
  * @author zhangrongkang
  * @date 2022/8/12
  */
-public interface MenuService {
+public interface IMenuService {
     /**
      * 根据角色获取菜单列表
      *

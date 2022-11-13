@@ -1,6 +1,6 @@
 package com.zrkizzy.template.controller;
 
-import com.zrkizzy.template.service.UserService;
+import com.zrkizzy.template.service.IUserService;
 import com.zrkizzy.template.vo.PageVO;
 import com.zrkizzy.template.vo.Result;
 import com.zrkizzy.template.vo.AvatarVO;
@@ -26,60 +26,60 @@ import java.io.IOException;
 @RequestMapping("/user/admin")
 public class UserController {
     @Resource
-    private UserService userService;
+    private IUserService IUserService;
 
     @ApiOperation("获取当前登录的用户信息")
     @GetMapping("/getUserById")
     public Result getUserById() {
-        return Result.success("", userService.getUserByUserId());
+        return Result.success("", IUserService.getUserByUserId());
     }
 
     @ApiOperation("获取用户登录设备")
     @GetMapping("/getUserAgent")
     public String getUserAgent(HttpServletRequest request) {
-        return userService.getUserAgent(request);
+        return IUserService.getUserAgent(request);
     }
 
     @ApiOperation("更新用户密码")
     @PutMapping("/updatePassword")
     public Result updatePassword(@RequestBody PasswordVO passwordVO) {
-        return userService.updatePassword(passwordVO);
+        return IUserService.updatePassword(passwordVO);
     }
 
     @ApiOperation("修改指定用户密码")
     @PutMapping("/updatePasswordById")
     public Result updatePasswordById(Integer userId, String password) {
-        return userService.updatePasswordById(userId, password);
+        return IUserService.updatePasswordById(userId, password);
     }
 
     @ApiOperation("获取所有用户")
     @GetMapping("/getUserList")
     public PageVO getUserList(@RequestParam("curPage") Integer curPage, @RequestParam("size") Integer size, @RequestParam("name") String username) {
-        return userService.getUserList(curPage, size, username);
+        return IUserService.getUserList(curPage, size, username);
     }
 
     @ApiOperation("新增用户")
     @PostMapping("/addUser")
     public Result addUser(@RequestBody UserInfoVO userInfoVO) {
-        return userService.addUser(userInfoVO);
+        return IUserService.addUser(userInfoVO);
     }
 
     @ApiOperation("删除用户")
     @DeleteMapping("/deleteUserById/{id}")
     public Result deleteUserById(@PathVariable Integer id) {
-        return userService.deleteUserById(id);
+        return IUserService.deleteUserById(id);
     }
 
     @ApiOperation("用户头像上传")
     @PostMapping("/uploadAvatar")
     public Result uploadAvatar(MultipartFile file) throws IOException {
-        return userService.uploadAvatar(file);
+        return IUserService.uploadAvatar(file);
     }
 
     @ApiOperation("更新用户头像")
     @PostMapping("/updateAvatarById")
     public void updateAvatarById(@RequestBody AvatarVO avatarVO) {
-        userService.updateAvatarById(avatarVO);
+        IUserService.updateAvatarById(avatarVO);
     }
 
 }

@@ -7,7 +7,7 @@ import com.zrkizzy.template.entity.Menu;
 import com.zrkizzy.template.entity.Role;
 import com.zrkizzy.template.mapper.MenuMapper;
 import com.zrkizzy.template.mapper.RoleMapper;
-import com.zrkizzy.template.service.MenuService;
+import com.zrkizzy.template.service.IMenuService;
 import com.zrkizzy.template.utils.BeanCopyUtil;
 import com.zrkizzy.template.utils.UserUtil;
 import com.zrkizzy.template.vo.MenuVO;
@@ -25,7 +25,7 @@ import java.util.List;
  * @date 2022/8/12
  */
 @Service
-public class MenuServiceImpl implements MenuService {
+public class MenuServiceImpl implements IMenuService {
     @Resource
     private MenuMapper menuMapper;
     @Resource

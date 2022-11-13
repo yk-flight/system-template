@@ -1,7 +1,7 @@
 package com.zrkizzy.template.controller;
 
 import com.zrkizzy.template.dto.RoleDTO;
-import com.zrkizzy.template.service.RoleService;
+import com.zrkizzy.template.service.IRoleService;
 import com.zrkizzy.template.vo.Result;
 import com.zrkizzy.template.vo.RoleVO;
 import io.swagger.annotations.Api;
@@ -22,35 +22,35 @@ import java.util.List;
 @RequestMapping("/role")
 public class RoleController {
     @Resource
-    private RoleService roleService;
+    private IRoleService IRoleService;
 
     @ApiOperation("获取所有角色")
     @GetMapping("/admin/getAllRoles")
     public List<RoleDTO> getAllRoles() {
-        return roleService.getAllRoles();
+        return IRoleService.getAllRoles();
     }
 
     @ApiOperation("更新角色")
     @PutMapping("/admin/updateRole")
     public Result updateRole(@RequestBody RoleVO roleVO) {
-        return roleService.updateRole(roleVO);
+        return IRoleService.updateRole(roleVO);
     }
 
     @ApiOperation("新增角色")
     @PostMapping("/admin/insertRole")
     public Result insertRole(@RequestBody RoleVO roleVO) {
-        return roleService.insertRole(roleVO);
+        return IRoleService.insertRole(roleVO);
     }
 
     @ApiOperation("删除角色")
     @DeleteMapping("/admin/deleteRole/{id}")
     public Result deleteRoleById(@PathVariable Integer id) {
-        return roleService.deleteRoleById(id);
+        return IRoleService.deleteRoleById(id);
     }
 
     @ApiOperation("获取当前登录用户可访问的页面")
     @GetMapping("/admin/getAccessPath")
     public List<String> getAccessPath() {
-        return roleService.getAccessPath();
+        return IRoleService.getAccessPath();
     }
 }

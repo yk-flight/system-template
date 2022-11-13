@@ -6,7 +6,7 @@ import com.zrkizzy.template.entity.User;
 import com.zrkizzy.template.entity.UserInfo;
 import com.zrkizzy.template.mapper.UserInfoMapper;
 import com.zrkizzy.template.mapper.UserMapper;
-import com.zrkizzy.template.service.UserInfoService;
+import com.zrkizzy.template.service.IUserInfoService;
 import com.zrkizzy.template.utils.BeanCopyUtil;
 import com.zrkizzy.template.utils.UserUtil;
 import com.zrkizzy.template.vo.Result;
@@ -24,7 +24,7 @@ import java.util.Date;
  * @date 2022/8/15
  */
 @Service
-public class UserInfoServiceImpl implements UserInfoService {
+public class IUserInfoServiceImpl implements IUserInfoService {
     @Resource
     private UserInfoMapper userInfoMapper;
     @Resource

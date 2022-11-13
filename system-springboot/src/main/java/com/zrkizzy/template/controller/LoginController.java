@@ -1,7 +1,7 @@
 package com.zrkizzy.template.controller;
 
 import com.zrkizzy.template.query.LoginQuery;
-import com.zrkizzy.template.service.UserService;
+import com.zrkizzy.template.service.IUserService;
 import com.zrkizzy.template.vo.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,12 +22,12 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class LoginController {
     @Resource
-    private UserService userService;
+    private IUserService IUserService;
 
     @ApiOperation(value = "登录后返回token")
     @PostMapping("/login")
     public Result login(@RequestBody LoginQuery loginQuery, HttpServletRequest request) {
-        return userService.login(loginQuery.getUsername(), loginQuery.getPassword(), loginQuery.getCode(), request);
+        return IUserService.login(loginQuery.getUsername(), loginQuery.getPassword(), loginQuery.getCode(), request);
     }
 
     @ApiOperation(value = "退出登录")

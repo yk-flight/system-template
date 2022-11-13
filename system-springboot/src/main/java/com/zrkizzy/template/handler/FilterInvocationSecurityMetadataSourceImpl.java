@@ -2,7 +2,7 @@ package com.zrkizzy.template.handler;
 
 import com.zrkizzy.template.entity.Menu;
 import com.zrkizzy.template.entity.Role;
-import com.zrkizzy.template.service.MenuService;
+import com.zrkizzy.template.service.IMenuService;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
@@ -23,7 +23,7 @@ import java.util.List;
 @Component
 public class FilterInvocationSecurityMetadataSourceImpl implements FilterInvocationSecurityMetadataSource {
     @Resource
-    private MenuService menuService;
+    private IMenuService IMenuService;
 
     private AntPathMatcher antPathMatcher = new AntPathMatcher();
 
@@ -32,7 +32,7 @@ public class FilterInvocationSecurityMetadataSourceImpl implements FilterInvocat
         // 获取请求的url
         String requestUrl = ((FilterInvocation) object).getRequestUrl();
         // 获取到所有的菜单
-        List<Menu> menus = menuService.getMenuWithRole();
+        List<Menu> menus = IMenuService.getMenuWithRole();
         // 匹配请求的url与菜单角色中的url是否匹配
         for (Menu menu : menus) {
             if (antPathMatcher.match(menu.getUrl(), requestUrl)) {

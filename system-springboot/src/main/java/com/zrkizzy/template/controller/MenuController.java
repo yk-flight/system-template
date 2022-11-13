@@ -2,7 +2,7 @@ package com.zrkizzy.template.controller;
 
 import com.zrkizzy.template.dto.MenuDTO;
 import com.zrkizzy.template.dto.PermissionDTO;
-import com.zrkizzy.template.service.MenuService;
+import com.zrkizzy.template.service.IMenuService;
 import com.zrkizzy.template.vo.MenuVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,17 +24,17 @@ import java.util.List;
 @RestController
 public class MenuController {
     @Resource
-    private MenuService menuService;
+    private IMenuService IMenuService;
 
     @ApiOperation("获取所有角色权限")
     @GetMapping("/admin/getAllPermission")
     public List<PermissionDTO> getAllPermission() {
-        return menuService.getAllPermission();
+        return IMenuService.getAllPermission();
     }
 
     @ApiOperation("获取所有菜单列表")
     @PostMapping("/admin/getAllMenus")
     public List<MenuDTO> getAllMenus(@RequestBody MenuVO menuVO) {
-        return menuService.getAllMenus(menuVO);
+        return IMenuService.getAllMenus(menuVO);
     }
 }

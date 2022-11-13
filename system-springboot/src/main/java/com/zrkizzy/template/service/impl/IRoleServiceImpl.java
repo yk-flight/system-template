@@ -7,7 +7,7 @@ import com.zrkizzy.template.entity.UserRole;
 import com.zrkizzy.template.mapper.MenuMapper;
 import com.zrkizzy.template.mapper.RoleMapper;
 import com.zrkizzy.template.mapper.UserRoleMapper;
-import com.zrkizzy.template.service.RoleService;
+import com.zrkizzy.template.service.IRoleService;
 import com.zrkizzy.template.utils.BeanCopyUtil;
 import com.zrkizzy.template.utils.UserUtil;
 import com.zrkizzy.template.vo.Result;
@@ -25,7 +25,7 @@ import java.util.List;
  * @date 2022/8/7
  */
 @Service
-public class RoleServiceImpl implements RoleService {
+public class IRoleServiceImpl implements IRoleService {
     @Resource
     private RoleMapper roleMapper;
     @Resource

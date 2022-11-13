@@ -8,7 +8,7 @@ import com.zrkizzy.template.vo.Result;
  * @author zhangrongkang
  * @date 2022/8/15
  */
-public interface UserInfoService {
+public interface IUserInfoService {
     /**
      * 获取当前登录用户的个人信息
      *

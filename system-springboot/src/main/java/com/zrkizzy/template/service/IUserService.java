@@ -19,7 +19,7 @@ import java.util.List;
  * @author zhangrongkang
  * @date 2022/8/7
  */
-public interface UserService {
+public interface IUserService {
 
     /**
      * 通过用户名获取用户对象
