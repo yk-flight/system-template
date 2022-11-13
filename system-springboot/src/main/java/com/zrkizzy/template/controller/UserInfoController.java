@@ -3,7 +3,7 @@ package com.zrkizzy.template.controller;
 import com.zrkizzy.template.entity.UserInfo;
 import com.zrkizzy.template.service.UserInfoService;
 import com.zrkizzy.template.vo.Result;
-import com.zrkizzy.template.vo.param.UserInfoVO;
+import com.zrkizzy.template.vo.UserInfoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;

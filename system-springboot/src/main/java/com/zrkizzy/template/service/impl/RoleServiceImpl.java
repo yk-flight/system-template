@@ -11,7 +11,7 @@ import com.zrkizzy.template.service.RoleService;
 import com.zrkizzy.template.utils.BeanCopyUtil;
 import com.zrkizzy.template.utils.UserUtil;
 import com.zrkizzy.template.vo.Result;
-import com.zrkizzy.template.vo.param.RoleVO;
+import com.zrkizzy.template.vo.RoleVO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

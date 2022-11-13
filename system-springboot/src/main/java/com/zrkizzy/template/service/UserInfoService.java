@@ -2,7 +2,7 @@ package com.zrkizzy.template.service;
 
 import com.zrkizzy.template.entity.UserInfo;
 import com.zrkizzy.template.vo.Result;
-import com.zrkizzy.template.vo.param.UserInfoVO;
+import com.zrkizzy.template.vo.UserInfoVO;
 
 /**
  * @author zhangrongkang

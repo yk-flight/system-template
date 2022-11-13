@@ -2,7 +2,7 @@ package com.zrkizzy.template.service;
 
 import com.zrkizzy.template.dto.RoleDto;
 import com.zrkizzy.template.vo.Result;
-import com.zrkizzy.template.vo.param.RoleVO;
+import com.zrkizzy.template.vo.RoleVO;
 
 import java.util.List;
 

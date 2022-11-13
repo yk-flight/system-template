@@ -2,7 +2,7 @@ package com.zrkizzy.template.controller;
 
 import com.zrkizzy.template.service.UserService;
 import com.zrkizzy.template.vo.Result;
-import com.zrkizzy.template.vo.param.UserLoginVO;
+import com.zrkizzy.template.vo.UserLoginVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;

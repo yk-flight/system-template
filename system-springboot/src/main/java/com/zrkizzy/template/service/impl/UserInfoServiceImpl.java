@@ -9,7 +9,7 @@ import com.zrkizzy.template.service.UserInfoService;
 import com.zrkizzy.template.utils.BeanCopyUtil;
 import com.zrkizzy.template.utils.UserUtil;
 import com.zrkizzy.template.vo.Result;
-import com.zrkizzy.template.vo.param.UserInfoVO;
+import com.zrkizzy.template.vo.UserInfoVO;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;

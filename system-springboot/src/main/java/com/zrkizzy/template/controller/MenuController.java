@@ -3,7 +3,7 @@ package com.zrkizzy.template.controller;
 import com.zrkizzy.template.dto.MenuDto;
 import com.zrkizzy.template.dto.PermissionDto;
 import com.zrkizzy.template.service.MenuService;
-import com.zrkizzy.template.vo.param.MenuVO;
+import com.zrkizzy.template.vo.MenuVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
