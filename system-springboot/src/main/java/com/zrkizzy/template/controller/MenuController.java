@@ -1,7 +1,7 @@
 package com.zrkizzy.template.controller;
 
-import com.zrkizzy.template.dto.MenuDto;
-import com.zrkizzy.template.dto.PermissionDto;
+import com.zrkizzy.template.dto.MenuDTO;
+import com.zrkizzy.template.dto.PermissionDTO;
 import com.zrkizzy.template.service.MenuService;
 import com.zrkizzy.template.vo.MenuVO;
 import io.swagger.annotations.Api;
@@ -28,13 +28,13 @@ public class MenuController {
 
     @ApiOperation("获取所有角色权限")
     @GetMapping("/admin/getAllPermission")
-    public List<PermissionDto> getAllPermission() {
+    public List<PermissionDTO> getAllPermission() {
         return menuService.getAllPermission();
     }
 
     @ApiOperation("获取所有菜单列表")
     @PostMapping("/admin/getAllMenus")
-    public List<MenuDto> getAllMenus(@RequestBody MenuVO menuVO) {
+    public List<MenuDTO> getAllMenus(@RequestBody MenuVO menuVO) {
         return menuService.getAllMenus(menuVO);
     }
 }

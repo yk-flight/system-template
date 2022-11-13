@@ -1,7 +1,7 @@
 package com.zrkizzy.template.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zrkizzy.template.dto.PermissionDto;
+import com.zrkizzy.template.dto.PermissionDTO;
 import com.zrkizzy.template.entity.Role;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public interface RoleMapper extends BaseMapper<Role> {
      *
      * @return 权限列表
      */
-    List<PermissionDto> getAllPermission();
+    List<PermissionDTO> getAllPermission();
 
     /**
      * 通过UserId获取到对应到角色

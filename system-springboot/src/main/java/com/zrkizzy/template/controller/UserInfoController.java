@@ -1,5 +1,6 @@
 package com.zrkizzy.template.controller;
 
+import com.zrkizzy.template.dto.UserInfoDTO;
 import com.zrkizzy.template.entity.UserInfo;
 import com.zrkizzy.template.service.UserInfoService;
 import com.zrkizzy.template.vo.Result;
@@ -30,8 +31,8 @@ public class UserInfoController {
 
     @ApiOperation("更新用户个人信息")
     @PostMapping("/admin/updateUserInfo")
-    public Result updateUserInfo(@RequestBody UserInfoVO userInfoVO) {
-        return userInfoService.updateUserInfo(userInfoVO);
+    public Result updateUserInfo(@RequestBody UserInfoDTO userInfoDTO) {
+        return userInfoService.updateUserInfo(userInfoDTO);
     }
 
     @ApiOperation("获取指定用户信息")

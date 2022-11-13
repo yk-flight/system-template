@@ -1,6 +1,6 @@
 package com.zrkizzy.template.controller;
 
-import com.zrkizzy.template.dto.RoleDto;
+import com.zrkizzy.template.dto.RoleDTO;
 import com.zrkizzy.template.service.RoleService;
 import com.zrkizzy.template.vo.Result;
 import com.zrkizzy.template.vo.RoleVO;
@@ -26,7 +26,7 @@ public class RoleController {
 
     @ApiOperation("获取所有角色")
     @GetMapping("/admin/getAllRoles")
-    public List<RoleDto> getAllRoles() {
+    public List<RoleDTO> getAllRoles() {
         return roleService.getAllRoles();
     }
 

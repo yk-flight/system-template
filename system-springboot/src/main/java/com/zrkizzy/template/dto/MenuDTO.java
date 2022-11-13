@@ -1,7 +1,5 @@
 package com.zrkizzy.template.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,9 +13,11 @@ import java.util.List;
  * @date 2022/8/19
  */
 @Data
-public class MenuDto implements Serializable {
+public class MenuDTO implements Serializable {
 
-
+    /**
+     * 主键
+     */
     private Integer id;
 
     /**
@@ -63,5 +63,5 @@ public class MenuDto implements Serializable {
     /**
      * 子菜单
      */
-    private List<MenuDto> children;
+    private List<MenuDTO> children;
 }

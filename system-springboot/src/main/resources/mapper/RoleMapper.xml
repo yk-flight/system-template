@@ -15,7 +15,7 @@
     </select>
 
     <!-- 获取所有权限 -->
-    <select id="getAllPermission" resultType="com.zrkizzy.template.dto.PermissionDto">
+    <select id="getAllPermission" resultType="com.zrkizzy.template.dto.PermissionDTO">
         SELECT DISTINCT
         m.id,
         m.path,

@@ -1,7 +1,5 @@
 package com.zrkizzy.template.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.List;
@@ -13,7 +11,7 @@ import java.util.List;
  * @date 2022/8/20
  */
 @Data
-public class PermissionDto {
+public class PermissionDTO {
 
     /**
      * 主键
@@ -38,5 +36,5 @@ public class PermissionDto {
     /**
      * 权限子项
      */
-    private List<PermissionDto> children;
+    private List<PermissionDTO> children;
 }

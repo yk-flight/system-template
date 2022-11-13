@@ -1,7 +1,7 @@
 package com.zrkizzy.template.service;
 
-import com.zrkizzy.template.dto.MenuDto;
-import com.zrkizzy.template.dto.PermissionDto;
+import com.zrkizzy.template.dto.MenuDTO;
+import com.zrkizzy.template.dto.PermissionDTO;
 import com.zrkizzy.template.entity.Menu;
 import com.zrkizzy.template.vo.MenuVO;
 
@@ -25,12 +25,12 @@ public interface MenuService {
      * @param menuVO 菜单参数对象
      * @return 菜单列表
      */
-    List<MenuDto> getAllMenus(MenuVO menuVO);
+    List<MenuDTO> getAllMenus(MenuVO menuVO);
 
     /**
      * 获取所有权限
      *
      * @return 所有角色权限
      */
-    List<PermissionDto> getAllPermission();
+    List<PermissionDTO> getAllPermission();
 }

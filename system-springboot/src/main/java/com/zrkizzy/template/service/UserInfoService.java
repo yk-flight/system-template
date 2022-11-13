@@ -1,8 +1,8 @@
 package com.zrkizzy.template.service;
 
+import com.zrkizzy.template.dto.UserInfoDTO;
 import com.zrkizzy.template.entity.UserInfo;
 import com.zrkizzy.template.vo.Result;
-import com.zrkizzy.template.vo.UserInfoVO;
 
 /**
  * @author zhangrongkang
@@ -19,10 +19,10 @@ public interface UserInfoService {
     /**
      * 更新登录用户的个人信息
      *
-     * @param userInfoVO 用户信息对象
+     * @param userInfoDTO 用户信息传输对象
      * @return 前端返回对象
      */
-    Result updateUserInfo(UserInfoVO userInfoVO);
+    Result updateUserInfo(UserInfoDTO userInfoDTO);
 
     /**
      * 通过用户ID获取指定的用户信息

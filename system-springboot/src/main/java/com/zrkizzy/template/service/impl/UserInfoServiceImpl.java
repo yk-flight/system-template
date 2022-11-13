@@ -1,6 +1,7 @@
 package com.zrkizzy.template.service.impl;
 
 import com.zrkizzy.template.annotation.LogAnnotation;
+import com.zrkizzy.template.dto.UserInfoDTO;
 import com.zrkizzy.template.entity.User;
 import com.zrkizzy.template.entity.UserInfo;
 import com.zrkizzy.template.mapper.UserInfoMapper;
@@ -9,7 +10,6 @@ import com.zrkizzy.template.service.UserInfoService;
 import com.zrkizzy.template.utils.BeanCopyUtil;
 import com.zrkizzy.template.utils.UserUtil;
 import com.zrkizzy.template.vo.Result;
-import com.zrkizzy.template.vo.UserInfoVO;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
@@ -56,32 +56,32 @@ public class UserInfoServiceImpl implements UserInfoService {
     /**
      * 更新登录用户的个人信息
      *
-     * @param userInfoVO 用户信息对象
+     * @param userInfoDTO 用户信息传输对象
      * @return 前端返回对象
      */
     @Override
     @LogAnnotation(module = "用户信息模块", description = "更新用户个人信息")
     @Transactional(rollbackFor = RuntimeException.class)
-    public Result updateUserInfo(UserInfoVO userInfoVO) {
+    public Result updateUserInfo(UserInfoDTO userInfoDTO) {
         // 获取当前登录用户ID
-        Integer userId = userInfoVO.getId();
+        Integer userId = userInfoDTO.getId();
         // 查询当前用户的昵称和账号
         User user = userMapper.selectById(userId);
         // 判断昵称是否需要修改
-        if (!user.getNickName().equals(userInfoVO.getNickName())) {
+        if (!user.getNickName().equals(userInfoDTO.getNickName())) {
             // 如果昵称需要更新则将用户昵称进行设置
-            user.setNickName(userInfoVO.getNickName());
+            user.setNickName(userInfoDTO.getNickName());
         }
         // 判断用户账号是否需要修改
-        if (!StringUtils.isEmpty(userInfoVO.getUsername()) && !user.getUsername().equals(userInfoVO.getUsername())) {
+        if (!StringUtils.isEmpty(userInfoDTO.getUsername()) && !user.getUsername().equals(userInfoDTO.getUsername())) {
             // 如果需要更新账号
-            user.setUsername(userInfoVO.getUsername());
+            user.setUsername(userInfoDTO.getUsername());
         }
         // 更新用户上一次更新时间
         user.setUpdateTime(new Date());
         // 更新用户信息
         userMapper.updateById(user);
-        UserInfo userInfo = BeanCopyUtil.copy(userInfoVO, UserInfo.class);
+        UserInfo userInfo = BeanCopyUtil.copy(userInfoDTO, UserInfo.class);
         // 设置当前用户对象的ID
         userInfo.setId(userId);
         // 获取受到影响到行数

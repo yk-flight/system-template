@@ -1,8 +1,8 @@
 package com.zrkizzy.template.controller;
 
+import com.zrkizzy.template.query.LoginQuery;
 import com.zrkizzy.template.service.UserService;
 import com.zrkizzy.template.vo.Result;
-import com.zrkizzy.template.vo.UserLoginVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,8 +26,8 @@ public class LoginController {
 
     @ApiOperation(value = "登录后返回token")
     @PostMapping("/login")
-    public Result login(@RequestBody UserLoginVO userLoginVO, HttpServletRequest request) {
-        return userService.login(userLoginVO.getUsername(), userLoginVO.getPassword(), userLoginVO.getCode(), request);
+    public Result login(@RequestBody LoginQuery loginQuery, HttpServletRequest request) {
+        return userService.login(loginQuery.getUsername(), loginQuery.getPassword(), loginQuery.getCode(), request);
     }
 
     @ApiOperation(value = "退出登录")

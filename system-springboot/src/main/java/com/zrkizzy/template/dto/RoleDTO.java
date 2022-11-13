@@ -1,7 +1,5 @@
 package com.zrkizzy.template.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,7 +12,7 @@ import java.util.List;
  * @date 2022/8/20
  */
 @Data
-public class RoleDto {
+public class RoleDTO {
     /**
      * 主键
      */

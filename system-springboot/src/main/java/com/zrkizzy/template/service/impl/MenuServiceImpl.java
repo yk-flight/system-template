@@ -1,8 +1,8 @@
 package com.zrkizzy.template.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.zrkizzy.template.dto.MenuDto;
-import com.zrkizzy.template.dto.PermissionDto;
+import com.zrkizzy.template.dto.MenuDTO;
+import com.zrkizzy.template.dto.PermissionDTO;
 import com.zrkizzy.template.entity.Menu;
 import com.zrkizzy.template.entity.Role;
 import com.zrkizzy.template.mapper.MenuMapper;
@@ -64,7 +64,7 @@ public class MenuServiceImpl implements MenuService {
      * @return 菜单列表
      */
     @Override
-    public List<MenuDto> getAllMenus(MenuVO menuVO) {
+    public List<MenuDTO> getAllMenus(MenuVO menuVO) {
         QueryWrapper<Menu> queryWrapper = new QueryWrapper<>();
         // 定义查询条件
         queryWrapper.ne("component", "/");
@@ -76,7 +76,7 @@ public class MenuServiceImpl implements MenuService {
             queryWrapper.eq("enabled", menuVO.getEnabled());
         }
         // 查询出所有符合条件的菜单集合并转为 MenuDto 集合
-        List<MenuDto> menuList = BeanCopyUtil.copyList(menuMapper.selectList(queryWrapper), MenuDto.class);
+        List<MenuDTO> menuList = BeanCopyUtil.copyList(menuMapper.selectList(queryWrapper), MenuDTO.class);
         // 将查询出的菜单设置子集
         menuList = setMenuChildren(1, menuList);
         // 返回菜单集合
@@ -89,10 +89,10 @@ public class MenuServiceImpl implements MenuService {
      * @return 所有角色权限
      */
     @Override
-    public List<PermissionDto> getAllPermission() {
-        List<PermissionDto> permissionList = roleMapper.getAllPermission();
-        List<PermissionDto> result = new ArrayList<>();
-        for (PermissionDto permissionDto : permissionList) {
+    public List<PermissionDTO> getAllPermission() {
+        List<PermissionDTO> permissionList = roleMapper.getAllPermission();
+        List<PermissionDTO> result = new ArrayList<>();
+        for (PermissionDTO permissionDto : permissionList) {
             permissionDto.setChildren(setPermissionChildren(permissionDto.getPath(), permissionList));
             if (!CollectionUtils.isEmpty(permissionDto.getChildren())) {
                 result.add(permissionDto);
@@ -108,18 +108,18 @@ public class MenuServiceImpl implements MenuService {
      * @param menuList 所有菜单对象的集合
      * @return 封装好的菜单集合
      */
-    private List<MenuDto> setMenuChildren(Integer id, List<MenuDto> menuList) {
+    private List<MenuDTO> setMenuChildren(Integer id, List<MenuDTO> menuList) {
         // 存储菜单的集合
-        List<MenuDto> childrenList = new ArrayList<>();
+        List<MenuDTO> childrenList = new ArrayList<>();
         // 遍历所有的菜单集合
-        for (MenuDto menu : menuList) {
+        for (MenuDTO menu : menuList) {
             // 如果当前Menu的父ID与传来的ID相同则添加到菜单集合中
             if (menu.getParentId().equals(id)) {
                 childrenList.add(menu);
             }
         }
         // 递归获取并设置所有子菜单
-        for (MenuDto menu : childrenList) {
+        for (MenuDTO menu : childrenList) {
             menu.setChildren(setMenuChildren(menu.getId(), menuList));
         }
         // 如果当前菜单没有子菜单则返回一个空的集合
@@ -137,10 +137,10 @@ public class MenuServiceImpl implements MenuService {
      * @param permissionList 权限列表
      * @return 设置好权限的集合
      */
-    private List<PermissionDto> setPermissionChildren(String path, List<PermissionDto> permissionList) {
-        List<PermissionDto> children = new ArrayList<>();
+    private List<PermissionDTO> setPermissionChildren(String path, List<PermissionDTO> permissionList) {
+        List<PermissionDTO> children = new ArrayList<>();
 
-        for (PermissionDto permissionDto : permissionList) {
+        for (PermissionDTO permissionDto : permissionList) {
             // 如果遍历到本身
             if (path.equals(permissionDto.getPath())) {
                 continue;
