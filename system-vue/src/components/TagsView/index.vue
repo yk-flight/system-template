@@ -1,27 +1,32 @@
 <template>
   <div class="tags-view-container">
-    <router-link
-      class="tags-view-item"
-      v-for="(tag, index) in this.$store.getters.tagsViewList"
-      :class="isActive(tag) ? 'active' : ''"
-      :key="tag.fullPath"
-      :to="{ path: tag.fullPath }"
-      :style="{
-        backgroundColor: isActive(tag) ? '#409EFF' : '',
-      }"
-      >{{ tag.meta.title }}
-      <i
-        v-show="tag.path != '/dashboard'"
-        class="el-icon-close"
-        @click.prevent.stop="onCloseClick(index)"
-      ></i>
-    </router-link>
+    <div class="tags-view-left">
+      <router-link
+        class="tags-view-item"
+        v-for="(tag, index) in this.$store.getters.tagsViewList"
+        :class="isActive(tag) ? 'active' : ''"
+        :key="tag.fullPath"
+        :to="{ path: tag.fullPath }"
+        :style="{
+          backgroundColor: isActive(tag) ? '#409EFF' : '',
+        }"
+      >
+        {{ tag.meta.title }}
+        <i
+          v-show="tag.path != '/dashboard'"
+          class="el-icon-close"
+          @click.prevent.stop="onCloseClick(index)"
+        ></i>
+      </router-link>
+    </div>
+    <!-- 关闭全部 -->
+    <div class="tags-view-right">
+      <span class="tags-view-item" @click="closeAll">关闭全部</span>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-
 export default {
   name: "TagsView",
   data() {
@@ -29,9 +34,6 @@ export default {
       // 鼠标右键
       selectIndex: 0,
     };
-  },
-  computed: {
-    // ...mapState(["/app/tagsViewList"]),
   },
 
   methods: {
@@ -55,17 +57,42 @@ export default {
         );
       }
     },
+    // 关闭全部标签事件
+    closeAll() {
+      this.$store.commit("app/closeAllTagsView");
+      // 跳转路由到仪表盘
+      this.$router.push("/dashboard");
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .tags-view-container {
+  display: flex;
+  justify-content: space-between;
   height: 34px;
   width: 100%;
   background: #fff;
   border-bottom: 1px solid #d8dce5;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
+
+  .tags-view-left {
+    width: calc(100% - 100px);
+    /* 设置超出滚动 */
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
+  .tags-view-right {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 10px;
+  }
+
   .tags-view-item {
     text-decoration: none;
     display: inline-block;
@@ -80,6 +107,7 @@ export default {
     font-size: 12px;
     margin-left: 5px;
     margin-top: 4px;
+    margin-bottom: 2px;
     &:first-of-type {
       margin-left: 15px;
     }
