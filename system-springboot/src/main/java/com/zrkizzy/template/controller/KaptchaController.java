@@ -3,6 +3,7 @@ package com.zrkizzy.template.controller;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+
+import static com.zrkizzy.template.constant.RedisConst.KAPTCHA;
 
 /**
  * 验证码控制器
@@ -25,6 +28,8 @@ import java.io.IOException;
 public class KaptchaController {
     @Resource
     private DefaultKaptcha defaultKaptcha;
+    @Resource
+    private RedisTemplate<String, Object> redisTemplate;
 
     @ApiOperation(value = "生成返回验证码")
     @GetMapping(value = "/kaptcha", produces = "image/jpeg")
@@ -45,8 +50,8 @@ public class KaptchaController {
         // 获取验证码的文本内容
         String text = defaultKaptcha.createText();
         System.out.println("验证码内容为：" + text);
-        // 将验证码文本内容放入session
-        request.getSession().setAttribute("kaptcha", text);
+        // 将验证码内容存储到Redis中
+        redisTemplate.opsForValue().set(KAPTCHA, text);
         // 得到图片
         BufferedImage image = defaultKaptcha.createImage(text);
         ServletOutputStream outputStream = null;
