@@ -29,15 +29,15 @@
     <!-- 根据角色获取菜单列表 -->
     <select id="getMenuWithRole" resultMap="MenuWithRole">
         SELECT
-        m.*,
-        r.id AS rid,
-        r.role_name AS rname,
-        r.role_name_zh AS rnameZh
+            m.*,
+            r.id AS rid,
+            r.role_name AS rname,
+            r.role_name_zh AS rnameZh
         FROM
-        menu m,
-        `role` r
+            menu m,
+            `role` r
         WHERE
-        m.id IN
+            m.id IN
         <foreach collection="ids" item="id" separator="," open="(" close=")">
             #{id}
         </foreach>

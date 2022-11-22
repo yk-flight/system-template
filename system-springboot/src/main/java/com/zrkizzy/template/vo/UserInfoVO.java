@@ -10,6 +10,7 @@ import lombok.Data;
  */
 @Data
 public class UserInfoVO {
+
     /**
      * 用户ID
      */
@@ -69,4 +70,5 @@ public class UserInfoVO {
      * 自我简介
      */
     private String description;
+
 }

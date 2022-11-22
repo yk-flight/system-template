@@ -1,9 +1,9 @@
 package com.zrkizzy.template.controller;
 
-import com.zrkizzy.template.dto.MenuDTO;
+import com.zrkizzy.template.vo.MenuVO;
 import com.zrkizzy.template.dto.PermissionDTO;
 import com.zrkizzy.template.service.IMenuService;
-import com.zrkizzy.template.vo.MenuVO;
+import com.zrkizzy.template.dto.MenuDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +34,7 @@ public class MenuController {
 
     @ApiOperation("获取所有菜单列表")
     @PostMapping("/admin/getAllMenus")
-    public List<MenuDTO> getAllMenus(@RequestBody MenuVO menuVO) {
-        return menuService.getAllMenus(menuVO);
+    public List<MenuVO> getAllMenus(@RequestBody MenuDTO menuDTO) {
+        return menuService.getAllMenus(menuDTO);
     }
 }

@@ -1,7 +1,7 @@
 package com.zrkizzy.template.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.zrkizzy.template.dto.MenuDTO;
+import com.zrkizzy.template.vo.MenuVO;
 import com.zrkizzy.template.dto.PermissionDTO;
 import com.zrkizzy.template.entity.Menu;
 import com.zrkizzy.template.entity.Role;
@@ -10,7 +10,7 @@ import com.zrkizzy.template.mapper.RoleMapper;
 import com.zrkizzy.template.service.IMenuService;
 import com.zrkizzy.template.utils.BeanCopyUtil;
 import com.zrkizzy.template.utils.UserUtil;
-import com.zrkizzy.template.vo.MenuVO;
+import com.zrkizzy.template.dto.MenuDTO;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
@@ -60,23 +60,23 @@ public class MenuServiceImpl implements IMenuService {
     /**
      * 根据菜单名称和菜单状态获取符合条件的所有菜单
      *
-     * @param menuVO 菜单参数对象
+     * @param menuDTO 菜单参数对象
      * @return 菜单列表
      */
     @Override
-    public List<MenuDTO> getAllMenus(MenuVO menuVO) {
+    public List<MenuVO> getAllMenus(MenuDTO menuDTO) {
         QueryWrapper<Menu> queryWrapper = new QueryWrapper<>();
         // 定义查询条件
         queryWrapper.ne("component", "/");
-        if (null != menuVO.getName() && !"".equals(menuVO.getName())) {
-            queryWrapper.like("name", menuVO.getName());
+        if (null != menuDTO.getName() && !"".equals(menuDTO.getName())) {
+            queryWrapper.like("name", menuDTO.getName());
         }
         // 如果查询的是禁用的菜单
-        if (!menuVO.getEnabled()) {
-            queryWrapper.eq("enabled", menuVO.getEnabled());
+        if (!menuDTO.getEnabled()) {
+            queryWrapper.eq("enabled", menuDTO.getEnabled());
         }
         // 查询出所有符合条件的菜单集合并转为 MenuDto 集合
-        List<MenuDTO> menuList = BeanCopyUtil.copyList(menuMapper.selectList(queryWrapper), MenuDTO.class);
+        List<MenuVO> menuList = BeanCopyUtil.copyList(menuMapper.selectList(queryWrapper), MenuVO.class);
         // 将查询出的菜单设置子集
         menuList = setMenuChildren(1, menuList);
         // 返回菜单集合
@@ -108,18 +108,18 @@ public class MenuServiceImpl implements IMenuService {
      * @param menuList 所有菜单对象的集合
      * @return 封装好的菜单集合
      */
-    private List<MenuDTO> setMenuChildren(Integer id, List<MenuDTO> menuList) {
+    private List<MenuVO> setMenuChildren(Integer id, List<MenuVO> menuList) {
         // 存储菜单的集合
-        List<MenuDTO> childrenList = new ArrayList<>();
+        List<MenuVO> childrenList = new ArrayList<>();
         // 遍历所有的菜单集合
-        for (MenuDTO menu : menuList) {
+        for (MenuVO menu : menuList) {
             // 如果当前Menu的父ID与传来的ID相同则添加到菜单集合中
             if (menu.getParentId().equals(id)) {
                 childrenList.add(menu);
             }
         }
         // 递归获取并设置所有子菜单
-        for (MenuDTO menu : childrenList) {
+        for (MenuVO menu : childrenList) {
             menu.setChildren(setMenuChildren(menu.getId(), menuList));
         }
         // 如果当前菜单没有子菜单则返回一个空的集合

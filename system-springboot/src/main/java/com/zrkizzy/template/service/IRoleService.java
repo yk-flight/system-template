@@ -1,8 +1,8 @@
 package com.zrkizzy.template.service;
 
-import com.zrkizzy.template.dto.RoleDTO;
-import com.zrkizzy.template.vo.Result;
 import com.zrkizzy.template.vo.RoleVO;
+import com.zrkizzy.template.vo.Result;
+import com.zrkizzy.template.dto.RoleDTO;
 
 import java.util.List;
 
@@ -16,15 +16,15 @@ public interface IRoleService {
      *
      * @return 获取所有角色
      */
-    List<RoleDTO> getAllRoles();
+    List<RoleVO> getAllRoles();
 
     /**
      * 更新角色信息
      *
-     * @param roleVO 角色对象
+     * @param roleDTO 角色对象
      * @return 前端返回对象
      */
-    Result updateRole(RoleVO roleVO);
+    Result updateRole(RoleDTO roleDTO);
 
     /**
      * 删除指定的角色
@@ -37,10 +37,10 @@ public interface IRoleService {
     /**
      * 新增角色
      *
-     * @param roleVO 角色数据传递对象
+     * @param roleDTO 角色数据传递对象
      * @return 前端返回对象
      */
-    Result insertRole(RoleVO roleVO);
+    Result insertRole(RoleDTO roleDTO);
 
     /**
      * 获取当前登录用户可访问的页面路径

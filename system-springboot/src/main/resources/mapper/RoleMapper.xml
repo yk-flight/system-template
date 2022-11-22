@@ -17,14 +17,14 @@
     <!-- 获取所有权限 -->
     <select id="getAllPermission" resultType="com.zrkizzy.template.dto.PermissionDTO">
         SELECT DISTINCT
-        m.id,
-        m.path,
-        m.name,
-        m.icon
+            m.id,
+            m.path,
+            m.name,
+            m.icon
         FROM
-        menu m
+            menu m
         WHERE
-        m.path != '/'
+            m.path != '/'
     </select>
 
     <select id="selectByUserId" resultType="java.lang.String">

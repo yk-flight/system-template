@@ -1,9 +1,9 @@
 package com.zrkizzy.template.service;
 
-import com.zrkizzy.template.dto.MenuDTO;
+import com.zrkizzy.template.vo.MenuVO;
 import com.zrkizzy.template.dto.PermissionDTO;
 import com.zrkizzy.template.entity.Menu;
-import com.zrkizzy.template.vo.MenuVO;
+import com.zrkizzy.template.dto.MenuDTO;
 
 import java.util.List;
 
@@ -22,10 +22,10 @@ public interface IMenuService {
     /**
      * 根据菜单名称和菜单状态获取符合条件的所有菜单
      *
-     * @param menuVO 菜单参数对象
+     * @param menuDTO 菜单参数对象
      * @return 菜单列表
      */
-    List<MenuDTO> getAllMenus(MenuVO menuVO);
+    List<MenuVO> getAllMenus(MenuDTO menuDTO);
 
     /**
      * 获取所有权限

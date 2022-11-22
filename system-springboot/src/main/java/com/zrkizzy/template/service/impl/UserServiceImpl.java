@@ -8,12 +8,12 @@ import com.zrkizzy.template.entity.User;
 import com.zrkizzy.template.entity.UserInfo;
 import com.zrkizzy.template.entity.UserRole;
 import com.zrkizzy.template.mapper.*;
+import com.zrkizzy.template.query.AvatarQuery;
+import com.zrkizzy.template.query.PasswordQuery;
 import com.zrkizzy.template.service.IUserService;
 import com.zrkizzy.template.utils.*;
 import com.zrkizzy.template.vo.PageVO;
 import com.zrkizzy.template.vo.Result;
-import com.zrkizzy.template.vo.AvatarVO;
-import com.zrkizzy.template.vo.PasswordVO;
 import com.zrkizzy.template.vo.UserInfoVO;
 import eu.bitwalker.useragentutils.UserAgent;
 import org.springframework.beans.factory.annotation.Value;
@@ -213,15 +213,15 @@ public class UserServiceImpl implements IUserService {
     /**
      * 用户更新密码
      *
-     * @param passwordVO 用户密码参数对象
+     * @param passwordQuery 用户密码参数对象
      * @return 返回结果对象
      */
     @Override
     @LogAnnotation(module = "用户模块", description = "用户更新密码")
     @Transactional(rollbackFor = RuntimeException.class)
-    public Result updatePassword(PasswordVO passwordVO) {
+    public Result updatePassword(PasswordQuery passwordQuery) {
         // 判断新旧密码是否一致
-        if (passwordEncoder.matches(passwordVO.getNewPassword(), passwordVO.getOldPassword())) {
+        if (passwordEncoder.matches(passwordQuery.getNewPassword(), passwordQuery.getOldPassword())) {
             return Result.error("新密码不能与旧密码相同");
         }
         // 获取当前登录用户的ID
@@ -229,7 +229,7 @@ public class UserServiceImpl implements IUserService {
         // 通过用户ID查询到对应的用户对象
         User user = userMapper.selectById(userId);
 
-        String password = passwordEncoder.encode(passwordVO.getNewPassword());
+        String password = passwordEncoder.encode(passwordQuery.getNewPassword());
         // 更新上一次用户更新时间
         user.setUpdateTime(new Date());
         // 更新用户密码
@@ -372,17 +372,17 @@ public class UserServiceImpl implements IUserService {
     /**
      * 更新用户头像路径
      *
-     * @param avatarVO 用户头像参数接收对象
+     * @param avatarQuery 用户头像参数接收对象
      */
     @Override
     @LogAnnotation(module = "用户模块", description = "更新用户头像路径")
     @Transactional(rollbackFor = RuntimeException.class)
-    public void updateAvatarById(AvatarVO avatarVO) {
+    public void updateAvatarById(AvatarQuery avatarQuery) {
         // 获取到当前登录用户的ID
         Integer userId = UserUtil.getCurrentUser().getId();
         // 获取到当前用户
         User user = userMapper.selectById(userId);
-        user.setAvatar(avatarVO.getAvatar());
+        user.setAvatar(avatarQuery.getAvatar());
         user.setUpdateTime(new Date());
         // 更新用户头像和上一次更新时间
         userMapper.updateById(user);

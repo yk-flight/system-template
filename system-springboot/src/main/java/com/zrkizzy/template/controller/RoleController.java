@@ -1,8 +1,8 @@
 package com.zrkizzy.template.controller;
 
-import com.zrkizzy.template.dto.RoleDTO;
 import com.zrkizzy.template.service.IRoleService;
 import com.zrkizzy.template.vo.Result;
+import com.zrkizzy.template.dto.RoleDTO;
 import com.zrkizzy.template.vo.RoleVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,20 +26,20 @@ public class RoleController {
 
     @ApiOperation("获取所有角色")
     @GetMapping("/admin/getAllRoles")
-    public List<RoleDTO> getAllRoles() {
+    public List<RoleVO> getAllRoles() {
         return roleService.getAllRoles();
     }
 
     @ApiOperation("更新角色")
     @PutMapping("/admin/updateRole")
-    public Result updateRole(@RequestBody RoleVO roleVO) {
-        return roleService.updateRole(roleVO);
+    public Result updateRole(@RequestBody RoleDTO roleDTO) {
+        return roleService.updateRole(roleDTO);
     }
 
     @ApiOperation("新增角色")
     @PostMapping("/admin/insertRole")
-    public Result insertRole(@RequestBody RoleVO roleVO) {
-        return roleService.insertRole(roleVO);
+    public Result insertRole(@RequestBody RoleDTO roleDTO) {
+        return roleService.insertRole(roleDTO);
     }
 
     @ApiOperation("删除角色")

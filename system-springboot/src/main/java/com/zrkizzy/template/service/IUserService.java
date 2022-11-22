@@ -2,10 +2,10 @@ package com.zrkizzy.template.service;
 
 import com.zrkizzy.template.entity.Role;
 import com.zrkizzy.template.entity.User;
+import com.zrkizzy.template.query.AvatarQuery;
+import com.zrkizzy.template.query.PasswordQuery;
 import com.zrkizzy.template.vo.PageVO;
 import com.zrkizzy.template.vo.Result;
-import com.zrkizzy.template.vo.AvatarVO;
-import com.zrkizzy.template.vo.PasswordVO;
 import com.zrkizzy.template.vo.UserInfoVO;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -74,10 +74,10 @@ public interface IUserService {
     /**
      * 用户更新密码
      *
-     * @param passwordVO 用户密码参数对象
+     * @param passwordQuery 用户密码参数对象
      * @return 返回结果对象
      */
-    Result updatePassword(PasswordVO passwordVO);
+    Result updatePassword(PasswordQuery passwordQuery);
 
     /**
      * 获取用户列表
@@ -119,13 +119,14 @@ public interface IUserService {
      *
      * @param file 上传文件
      * @return 前端响应对象
+     * @throws IOException IO异常
      */
     Result uploadAvatar(MultipartFile file) throws IOException;
 
     /**
      * 更新用户头像路径
      *
-     * @param avatarVO 用户头像参数接收对象
+     * @param avatarQuery 用户头像参数接收对象
      */
-    void updateAvatarById(AvatarVO avatarVO);
+    void updateAvatarById(AvatarQuery avatarQuery);
 }

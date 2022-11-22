@@ -2,6 +2,7 @@ package com.zrkizzy.template.vo;
 
 import lombok.Data;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,6 +27,16 @@ public class RoleVO {
      * 角色名称
      */
     private String roleNameZh;
+
+    /**
+     * 创建时间
+     */
+    private Date createTime;
+
+    /**
+     * 更新时间
+     */
+    private Date updateTime;
 
     /**
      * 角色权限

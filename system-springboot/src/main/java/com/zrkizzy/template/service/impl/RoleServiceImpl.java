@@ -1,7 +1,6 @@
 package com.zrkizzy.template.service.impl;
 
 import com.zrkizzy.template.annotation.LogAnnotation;
-import com.zrkizzy.template.dto.RoleDTO;
 import com.zrkizzy.template.entity.Role;
 import com.zrkizzy.template.entity.UserRole;
 import com.zrkizzy.template.mapper.MenuMapper;
@@ -11,6 +10,7 @@ import com.zrkizzy.template.service.IRoleService;
 import com.zrkizzy.template.utils.BeanCopyUtil;
 import com.zrkizzy.template.utils.UserUtil;
 import com.zrkizzy.template.vo.Result;
+import com.zrkizzy.template.dto.RoleDTO;
 import com.zrkizzy.template.vo.RoleVO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,32 +39,32 @@ public class RoleServiceImpl implements IRoleService {
      * @return 获取所有角色
      */
     @Override
-    public List<RoleDTO> getAllRoles() {
+    public List<RoleVO> getAllRoles() {
         List<Role> roles = roleMapper.selectList(null);
-        List<RoleDTO> roleDTOList = new ArrayList<>();
+        List<RoleVO> roleVOList = new ArrayList<>();
         // 设置每一个角色对象
         for (Role role : roles) {
-            RoleDTO roleDto = BeanCopyUtil.copy(role, RoleDTO.class);
-            roleDto.setPermission(UserUtil.getPermissionByString(role.getPermission()));
-            roleDTOList.add(roleDto);
+            RoleVO roleVO = BeanCopyUtil.copy(role, RoleVO.class);
+            roleVO.setPermission(UserUtil.getPermissionByString(role.getPermission()));
+            roleVOList.add(roleVO);
         }
-        return roleDTOList;
+        return roleVOList;
     }
 
     /**
      * 更新角色信息
      *
-     * @param roleVO 角色对象
+     * @param roleDTO 角色对象
      * @return 前端返回对象
      */
     @Override
     @LogAnnotation(module = "角色模块", description = "更新角色")
     @Transactional(rollbackFor = RuntimeException.class)
-    public Result updateRole(RoleVO roleVO) {
-        Role role = BeanCopyUtil.copy(roleVO, Role.class);
+    public Result updateRole(RoleDTO roleDTO) {
+        Role role = BeanCopyUtil.copy(roleDTO, Role.class);
         // 如果权限列表中含有数据则说明需要更新权限
-        if (roleVO.getPermission().size() > 0) {
-            role.setPermission(UserUtil.setPermissionToString(roleVO.getPermission()));
+        if (roleDTO.getPermission().size() > 0) {
+            role.setPermission(UserUtil.setPermissionToString(roleDTO.getPermission()));
         }
         // 定义上一次更新时间
         role.setUpdateTime(new Date());
@@ -97,14 +97,14 @@ public class RoleServiceImpl implements IRoleService {
     /**
      * 新增角色
      *
-     * @param roleVO 角色数据传递对象
+     * @param roleDTO 角色数据传递对象
      * @return 前端返回对象
      */
     @Override
     @LogAnnotation(module = "角色模块", description = "新增角色")
     @Transactional(rollbackFor = RuntimeException.class)
-    public Result insertRole(RoleVO roleVO) {
-        Role role = BeanCopyUtil.copy(roleVO, Role.class);
+    public Result insertRole(RoleDTO roleDTO) {
+        Role role = BeanCopyUtil.copy(roleDTO, Role.class);
         // 设置角色的初始权限
         role.setPermission("[2,3]");
         // 设置当前角色的创建时间和上一次更新时间

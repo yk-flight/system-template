@@ -1,10 +1,10 @@
 package com.zrkizzy.template.controller;
 
+import com.zrkizzy.template.query.AvatarQuery;
+import com.zrkizzy.template.query.PasswordQuery;
 import com.zrkizzy.template.service.IUserService;
 import com.zrkizzy.template.vo.PageVO;
 import com.zrkizzy.template.vo.Result;
-import com.zrkizzy.template.vo.AvatarVO;
-import com.zrkizzy.template.vo.PasswordVO;
 import com.zrkizzy.template.vo.UserInfoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -42,8 +42,8 @@ public class UserController {
 
     @ApiOperation("更新用户密码")
     @PutMapping("/updatePassword")
-    public Result updatePassword(@RequestBody PasswordVO passwordVO) {
-        return userService.updatePassword(passwordVO);
+    public Result updatePassword(@RequestBody PasswordQuery passwordQuery) {
+        return userService.updatePassword(passwordQuery);
     }
 
     @ApiOperation("修改指定用户密码")
@@ -78,8 +78,8 @@ public class UserController {
 
     @ApiOperation("更新用户头像")
     @PostMapping("/updateAvatarById")
-    public void updateAvatarById(@RequestBody AvatarVO avatarVO) {
-        userService.updateAvatarById(avatarVO);
+    public void updateAvatarById(@RequestBody AvatarQuery avatarQuery) {
+        userService.updateAvatarById(avatarQuery);
     }
 
 }
