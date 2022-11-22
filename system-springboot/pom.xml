@@ -21,7 +21,7 @@
         <freemarker.version>2.3.28</freemarker.version>
         <userAgent.version>1.21</userAgent.version>
         <swagger.version>3.0.0</swagger.version>
-        <swagger-ui.version>1.9.6</swagger-ui.version>
+        <swagger-ui.version>2.0.4</swagger-ui.version>
         <commons-pool.version>2.9.0</commons-pool.version>
     </properties>
 
@@ -81,7 +81,7 @@
         <!-- Swagger2界面依赖 -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
-            <artifactId>swagger-bootstrap-ui</artifactId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
             <version>${swagger-ui.version}</version>
         </dependency>
 
