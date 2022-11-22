@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  * @date 2022/8/7
  */
 @Service
-public class IUserRoleServiceImpl implements IUserRoleService {
+public class UserRoleServiceImpl implements IUserRoleService {
 
     @Resource
     private UserRoleMapper userRoleMapper;

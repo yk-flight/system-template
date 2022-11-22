@@ -24,7 +24,7 @@ import java.util.Date;
  * @date 2022/8/15
  */
 @Service
-public class IUserInfoServiceImpl implements IUserInfoService {
+public class UserInfoServiceImpl implements IUserInfoService {
     @Resource
     private UserInfoMapper userInfoMapper;
     @Resource

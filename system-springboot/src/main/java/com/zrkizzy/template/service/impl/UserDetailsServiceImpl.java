@@ -16,15 +16,15 @@ import javax.annotation.Resource;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Resource
-    private IUserService IUserService;
+    private IUserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // 根据当前用户名到数据库中进行查询
-        User user = IUserService.getUserByUserName(username);
+        User user = userService.getUserByUserName(username);
         if (user != null) {
             // 设置当前用户的角色
-            user.setRoles(IUserService.getRoles(user.getId()));
+            user.setRoles(userService.getRoles(user.getId()));
             return user;
         }
         throw new UsernameNotFoundException("用户名或密码不正确");

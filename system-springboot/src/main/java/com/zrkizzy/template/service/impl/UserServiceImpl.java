@@ -17,6 +17,7 @@ import com.zrkizzy.template.vo.PasswordVO;
 import com.zrkizzy.template.vo.UserInfoVO;
 import eu.bitwalker.useragentutils.UserAgent;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -40,13 +41,14 @@ import java.util.Map;
 
 import static com.zrkizzy.template.constant.CommonConst.DOMAIN;
 import static com.zrkizzy.template.constant.CommonConst.LOCAL_HOST;
+import static com.zrkizzy.template.constant.RedisConst.KAPTCHA;
 
 /**
  * @author zhangrongkang
  * @date 2022/8/7
  */
 @Service
-public class IUserServiceImpl implements IUserService {
+public class UserServiceImpl implements IUserService {
     @Resource
     private UserMapper userMapper;
     @Resource
@@ -63,6 +65,8 @@ public class IUserServiceImpl implements IUserService {
     @Value("${file.path}")
     private String path;
 
+    @Resource
+    private RedisTemplate<String, Object> redisTemplate;
     @Resource
     private UserDetailsService userDetailsService;
     @Resource
@@ -93,8 +97,8 @@ public class IUserServiceImpl implements IUserService {
     @Override
     public Result login(String username, String password, String code, HttpServletRequest request) {
         // 1. -------------------- 判断验证码 --------------------
-        // 从Session中获取验证码
-        String kaptcha = (String) request.getSession().getAttribute("kaptcha");
+        // 从Redis中获取验证码
+        String kaptcha = (String) redisTemplate.opsForValue().get(KAPTCHA);
         // 判断验证码是否正确
         if (StringUtils.isEmpty(kaptcha) || !kaptcha.equals(code)) {
             return Result.error("验证码输入错误，请重新输入");

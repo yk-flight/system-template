@@ -25,7 +25,7 @@ import java.util.List;
  * @date 2022/8/7
  */
 @Service
-public class IRoleServiceImpl implements IRoleService {
+public class RoleServiceImpl implements IRoleService {
     @Resource
     private RoleMapper roleMapper;
     @Resource
