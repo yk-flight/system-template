@@ -42,15 +42,8 @@ public class UserInfoServiceImpl implements IUserInfoService {
     public UserInfo getCurrentUserInfo() {
         // 获取用户ID
         Integer userId = UserUtil.getCurrentUser().getId();
-        ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
-        // 从Redis中获取个人信息数据
-        UserInfo userInfo = (UserInfo) valueOperations.get("userInfo_" + userId);
-        if (userInfo == null) {
-            // 如果Redis中不存在个人信息数据则到数据库中查询，查询后存储到Redis中
-            userInfo = userInfoMapper.selectById(userId);
-            valueOperations.set("userInfo_" + userId, userInfo);
-        }
-        return userInfo;
+        // 根据当前获取到的用户ID获取用户信息
+        return getUserInfoById(userId);
     }
 
     /**
@@ -84,7 +77,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
         UserInfo userInfo = BeanCopyUtil.copy(userInfoDTO, UserInfo.class);
         // 设置当前用户对象的ID
         userInfo.setId(userId);
-        // 获取受到影响到行数
+        // 获取受到影响的行数
         int count = userInfoMapper.updateById(userInfo);
         // 更新Redis中的用户信息对象
         ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
@@ -104,6 +97,7 @@ public class UserInfoServiceImpl implements IUserInfoService {
      */
     @Override
     public UserInfo getUserInfoById(Integer userId) {
+        // 开启Redis
         ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
         // 从Redis中获取个人信息数据
         UserInfo userInfo = (UserInfo) valueOperations.get("userInfo_" + userId);
